@@ -1,6 +1,6 @@
 {
     "name": "Project Name",
     "summary": "Summary",
-    "milestones": [{}],
+    "milestones": [],
     "due_date": "Due Date"
 }
