@@ -1,7 +1,39 @@
-function handleForm(event){
-    console.log('HERE');
+function create_json(event){
+    
+    var compile_json = {};
+    fetch("data/template/milestone.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("HTTP error " + response.status);
+            }
+            return response.json();
+        })
+        .then(response => {
+            Object.keys(response).forEach(
+            key => {
+                compile_json[key] = document.getElementById("milestone_" + key).value
+                }
+            )
+            const data = JSON.stringify(compile_json);
+
+            const dir = './data/milestones';
+            fs.readdir(dir, (err, files) => {
+                var file_name = 'milestone_' + files.length + '.json';
+            });
+
+            fs.writeFile("./data/milestones/" + file_name, data, (error) => {
+                if (error) {
+                  console.error(error);
+              
+                  throw error;
+                }
+                console.log("Milestone JSON file has been created written correctly");
+              });
+            
+        }
+    )
     event.preventDefault();
-}
+};
 
 function milestone_button(message){
 
@@ -25,6 +57,7 @@ function milestone_button(message){
             for (let x in json) {
                 var input_box = document.createElement('input');
                 input_box.setAttribute("type","text")
+                input_box.setAttribute("id", "milestone_" + x)
                 input_box.setAttribute("name", json[x])
                 input_box.setAttribute("placeholder", json[x])
                 form.appendChild(input_box);
@@ -35,7 +68,7 @@ function milestone_button(message){
 
             input_submit.setAttribute("type","submit")
             input_submit.setAttribute("value","Submit")
-            input_submit.setAttribute("onclick", "handleForm(event);");
+            input_submit.addEventListener("click", create_json);
             form.appendChild(input_submit);
 
             document.getElementById('backlog_list').appendChild(form);
