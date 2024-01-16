@@ -1,7 +1,7 @@
 {
-    "name": "Task Name",
+    "name": "Backlog item 1",
     "due_date": "Due Date",
-    "milestone": "milestone",
+    "milestone": "milestone 1",
     "acceptance_criteria": "Acceptance Criteria",
-    "status": "status"
+    "status": "To Do"
 }
