@@ -1,7 +1,7 @@
 {
-    "name": "Backlog item 2",
+    "name": "Create, update and delete story items",
     "due_date": "Due Date",
-    "milestone": "milestone 3",
+    "milestone": "Interactive list of items",
     "acceptance_criteria": "Acceptance Criteria",
-    "status": "In Progress"
+    "status": "status_in_progress"
 }

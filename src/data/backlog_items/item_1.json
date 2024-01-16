@@ -1,7 +1,7 @@
 {
-    "name": "Backlog item 1",
+    "name": "Creating canvas",
     "due_date": "Due Date",
-    "milestone": "milestone 1",
+    "milestone": "Website Design",
     "acceptance_criteria": "Acceptance Criteria",
-    "status": "To Do"
+    "status": "status_to_do"
 }

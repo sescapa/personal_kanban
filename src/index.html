@@ -6,31 +6,28 @@
     <title>Personal Kanban</title>
     <script src="scripts/project.js"></script>
     <script src="scripts/milestones.js"></script>
+    <script src="scripts/backlog_items.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Project and Summary section -->
     <div class="header" id="project_header">
-        <script>project_page_header()</script>
     </div>
 
     <!-- Kanban Board section-->
 
     <div class="kanban_container" id="kanban_container">
-        <div class="status" id="status_to_do" data-status="to_do" style="background-color: grey" >TO DO
-            <div class="item">Backlog_item 1</div>
-            <div class="item">Backlog_item 2</div>    
+        <div class="status" id="status_to_do" data-status="to_do" style="background-color: grey" >
+            <text>TO DO</text> 
         </div>
-        <div class="status" id="status_in_progress" data-status="in_progress" style="background-color: orange;"> IN PROGRESS
-            <div class="item">Backlog_item 3</div>
-            <div class="item">Backlog_item 4</div>
-            <div class="item">Backlog_item 5</div>
+        <div class="status" id="status_in_progress" data-status="in_progress" style="background-color: orange;"> 
+            <text>IN PROGRESS</text>
         </div>
-        <div class="status" id="status_blocked" data-status="blocked" style="background-color: red;"> BLOCKED
-            <div class="item">Backlog_item 6</div>
+        <div class="status" id="status_blocked" data-status="blocked" style="background-color: red;"> 
+            <text>BLOCKED</text>
         </div>
-        <div class="status" id="status_done" data-status="done" style="background-color: green"> DONE 
-            <div class="item">Backlog_item 7</div>
+        <div class="status" id="status_done" data-status="done" style="background-color: green">
+            <text>DONE</text> 
         </div>
     </div>
     <!-- Backlog List section-->
@@ -42,9 +39,13 @@
             <button class="milestone_button" onclick="milestone_button('update')">+ Update Milestone</button>
             <button class="milestone_button" onclick="milestone_button('delete')">- Delete Milestone</button>
         </div>
-        <script>milestone_dropdown()</script>
 
     </div>
+    
+    <script>project_page_header()</script>
+    <script>milestone_dropdown()</script>
+    <script>populate_kanban_board()</script>
+
 
     <!-- Graphics section-->
 

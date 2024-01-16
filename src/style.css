@@ -1,6 +1,5 @@
 *{
     box-sizing: border-box;
-    margin: 0.5%;
     padding: 0.5%;
     font-family: 'Kumbh Sans', sans-serif;
 }
@@ -38,17 +37,14 @@
     width: auto;
     text-align:center;
     padding-left: 1%;
-    padding-bottom: 2%;
     margin-bottom: 1%;
-    
 }
 
 .milestone_button_div {
     height: auto;
     width: auto;
     display: flex;
-    padding-left: 2%;
-    margin-bottom: 2%;
+    padding-left: 2%; 
     text-align:center;
 }
 
@@ -56,7 +52,6 @@
     background: lightblue;
     width: 100%;
     height: auto;
-    margin-bottom: 1%;
     margin-right: 1%;
     padding-right: 2%;
     box-sizing: border-box;
@@ -92,7 +87,6 @@ summary {
     padding-left: 2%;
     position: flex;
     cursor: pointer;
-    margin-bottom: 1%;
 }
 
 summary:before {

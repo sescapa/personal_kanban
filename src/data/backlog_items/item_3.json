@@ -1,7 +1,7 @@
 {
-    "name": "Backlog item 3",
+    "name": "Create JSON structure",
     "due_date": "Due Date",
-    "milestone": "milestone 2",
+    "milestone": "Create Milestone",
     "acceptance_criteria": "Acceptance Criteria",
-    "status": "Blocked"
+    "status": "status_blocked"
 }
