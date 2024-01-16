@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXT Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Project and Summary section -->
+    <div class="header">
+        <div class="project_name" align="center">NAME</div>
+        <div class="project_summary" align="center">SUMMARY</div>
+    </div>
+
+    <!-- Kanban Board section-->
+
+    <div class="kanban_container">
+        <div class="status" data-status="to_do" style="background-color: grey">TO DO
+            <div class="item">Backlog_item 1</div>
+            <div class="item">Backlog_item 2</div>    
+        </div>
+        <div class="status" data-status="in_progress" style="background-color: orange;"> IN PROGRESS
+            <div class="item">Backlog_item 3</div>
+            <div class="item">Backlog_item 4</div>
+            <div class="item">Backlog_item 5</div>
+        </div>
+        <div class="status" data-status="blocked" style="background-color: red;"> BLOCKED
+            <div class="item">Backlog_item 6</div>
+        </div>
+        <div class="status" data-status="done" style="background-color: green"> DONE 
+            <div class="item">Backlog_item 7</div>
+        </div>
+    </div>
+    <!-- Backlog List section-->
+
+    <div class="backlog"> Backlog
+        <details>
+            <summary>Milestone 1</summary>
+            <ul>
+                <div class="item">Backlog_item 1</div>
+            </ul>
+        </details>
+        <details>
+            <summary>Milestone 2</summary>
+            <ul>
+                <div class="item">Backlog_item 2</div>
+                <div class="item">Backlog_item 3</div>
+                <div class="item">Backlog_item 4</div>
+            </ul>
+        </details>
+        <details>
+            <summary>Milestone 3</summary>
+            <ul>
+                <div class="item">Backlog_item 5</div>
+                <div class="item">Backlog_item 6</div>
+                <div class="item">Backlog_item 7</div>     
+            </ul>
+        </details>
+
+    </div>
+    <!-- Graphics section-->
+
+    <div class="graphics_container">
+        <div class="graph" style="background-color: red;"> Graph 1</div>
+        <div class="graph" style="background-color: green"> Graph 2 </div>
+    </div>
+</body>
+</html>

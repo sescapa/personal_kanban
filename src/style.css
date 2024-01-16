@@ -1,0 +1,118 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.header {
+    background: #eeeeee;
+    height: auto;
+    width: auto;
+    top: 0;
+}
+
+.kanban_container {
+    background: pink;
+    height: auto;
+    width: auto;
+    display: flex;
+    padding-left: 2%;
+    margin-bottom: 2%;
+    text-align:center;
+}
+
+.kanban_container .status {
+    width: 100%;
+    height: auto;
+    margin-right: 2%;
+    box-sizing: border-box;
+    border-color: black;
+    border: 1px solid;
+}
+
+.backlog {
+    background: lightgrey;
+    height: auto;
+    width: auto;
+    text-align:center;
+    padding-left: 1%;
+    padding-bottom: 2%;
+    margin-bottom: 1%;
+}
+
+details {
+    width: 100%;
+    margin: 0 auto;
+    background: lightgrey;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 0.1rem 1rem -0.5rem rgba(0, 0, 0, .4);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+summary {
+    padding: 1%;
+    display: flex;
+    background: grey;
+    padding-left: 2%;
+    position: flex;
+    cursor: pointer;
+    margin-bottom: 1%;
+}
+summary:before {
+    content: '';
+    border-width: 0.4rem;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+    position: absolute;
+    top: 1.3rem;
+    left: 1rem;
+    transform: rotate(0);
+    transform-origin: 0.2rem 50%;
+    transition: 0.25s transform ease;
+}
+
+details[open] > summary:before {
+    transform: rotate(90deg);
+}
+details summary::-webkit-details-marker {
+    display: none;
+}
+details > ul {
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+}
+
+.item {
+    background: lightblue;
+    height: auto;
+    width: auto;
+    text-align:left;
+    box-sizing: border-box;
+    border-color: black;
+    border: 1px solid;
+    padding-left: 5px;
+    margin-bottom: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.graphics_container {
+    background: yellow;
+    height: auto;
+    width: auto;
+    display: flex;
+    padding-left: 2%;
+    margin-bottom: 2%;
+    text-align:center;
+}
+
+.graphics_container .graph {
+    width: 100%;
+    height: auto;
+    margin-right: 2%;
+    box-sizing: border-box;
+    border-color: black;
+    border: 1px solid;
+}
