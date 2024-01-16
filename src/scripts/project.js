@@ -8,7 +8,7 @@ function project_page_header(){
             return response.json();
         })
         .then(json => {
-            var header = document.getElementsByClassName("header");
+            var header = document.getElementById("project_header");
             var header_name = document.createElement('div');
             var header_summary = document.createElement('div');
 
@@ -18,13 +18,11 @@ function project_page_header(){
 
             header_summary.setAttribute("class","project_summary")
             header_summary.setAttribute("align", "center")
-            header_summary.innerHTML = json["description"]
+            header_summary.innerHTML = json["summary"]
 
             header.appendChild(header_name)
             header.appendChild(header_summary)
 
-        })   
-    }
-
-
+        }
+    )   
 };
