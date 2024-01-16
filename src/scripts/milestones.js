@@ -98,7 +98,7 @@ function milestone_dropdown(){
     var number_of_milestones = 3
 
     //Placeholder
-    for(let num=0; num <= number_of_milestones; num++) {
+    for(let num=1; num <= number_of_milestones; num++) {
 
         // Main Div
         var milestone_div = document.createElement('div')
@@ -117,15 +117,15 @@ function milestone_dropdown(){
 
         var milestone_buttons_new = document.createElement('button')
         milestone_buttons_new.innerHTML = "New Item"
-        milestone_buttons_new.class = "item_button"
+        milestone_buttons_new.setAttribute("class", "item_button")
 
         var milestone_buttons_update = document.createElement('button')
         milestone_buttons_update.innerHTML = "Update Item"
-        milestone_buttons_update.class = "item_button"
+        milestone_buttons_update.setAttribute("class", "item_button")
 
         var milestone_buttons_delete = document.createElement('button')
         milestone_buttons_delete.innerHTML = "Delete Item"
-        milestone_buttons_delete.class = "item_button"
+        milestone_buttons_delete.setAttribute("class", "item_button")
 
         milestone_buttons_div.appendChild(milestone_buttons_new)
         milestone_buttons_div.appendChild(milestone_buttons_update)

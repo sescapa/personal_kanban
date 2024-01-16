@@ -65,16 +65,14 @@
 }
 
 .item_button {
-    text-align: center;
-    background: #db3f34;
-    width: auto;
-    font-size: 10pt;
-    margin-top: 1%;
+    background: lightcyan;
+    height: auto;
     margin-bottom: 1%;
     margin-right: 1%;
     padding-right: 2%;
-    display: flex;
-    float: right;
+    box-sizing: border-box;
+    border-color: black;
+    border: 1px solid;
 }
 
 details {
