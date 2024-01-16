@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.header {
+    background: #eeeeee;
+    height: 60px;
+    width: auto;
+    top: 0;
+}
+
+.kanban_container {
+    background: pink;
+    height: auto;
+    width: auto;
+    display: flex;
+    padding-left: 2%;
+    margin-bottom: 2%;
+}
+
+.kanban_container .status {
+    width: 100%;
+    height: auto;
+    margin-right: 2%;
+    box-sizing: border-box;
+    border-color: black;
+    border: 1px solid;
+
+}
+
+.backlog {
+    background: #001aff;
+    height: 20px;
+    width: auto;
+}
+
+.graphics {
+    background: #ffe204;
+    height: 20px;
+    width: auto;
+    top: 0;
+    z-index: 1;
+}
