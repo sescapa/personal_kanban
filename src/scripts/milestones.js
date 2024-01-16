@@ -1,3 +1,5 @@
+// import fs from 'fs';
+
 function create_json(event){
     
     var compile_json = {};
@@ -85,5 +87,64 @@ function milestone_button(message){
 
     else if (message === 'delete'){
 
+    }
+};
+
+function milestone_dropdown(){
+
+    var backlog_list = document.getElementById("backlog_list");
+
+    //Placeholder
+    var number_of_milestones = 3
+
+    //Placeholder
+    for(let num=0; num <= number_of_milestones; num++) {
+
+        // Main Div
+        var milestone_div = document.createElement('div')
+        milestone_div.setAttribute("class", "milestone")
+        milestone_div.setAttribute("id", "milestone" + num)
+
+        // Details
+        var milestone_details = document.createElement('details')
+        
+        // Summary text
+        var milestone_summary = document.createElement('summary')
+        milestone_summary.innerHTML = "milestone " + num
+
+        // Milestone modification buttons
+        var milestone_buttons_div = document.createElement('div')
+
+        var milestone_buttons_new = document.createElement('button')
+        milestone_buttons_new.innerHTML = "New Item"
+        milestone_buttons_new.class = "item_button"
+
+        var milestone_buttons_update = document.createElement('button')
+        milestone_buttons_update.innerHTML = "Update Item"
+        milestone_buttons_update.class = "item_button"
+
+        var milestone_buttons_delete = document.createElement('button')
+        milestone_buttons_delete.innerHTML = "Delete Item"
+        milestone_buttons_delete.class = "item_button"
+
+        milestone_buttons_div.appendChild(milestone_buttons_new)
+        milestone_buttons_div.appendChild(milestone_buttons_update)
+        milestone_buttons_div.appendChild(milestone_buttons_delete)
+
+        // Milestone item list
+        var milestone_item_list = document.createElement('ul')
+        var backlog_item_div = document.createElement('div')
+        backlog_item_div.setAttribute("class", "item")
+        backlog_item_div.innerHTML = "Placeholder"
+
+        milestone_item_list.appendChild(backlog_item_div)
+
+        // Append everything together
+        milestone_details.appendChild(milestone_summary)
+        milestone_details.appendChild(milestone_buttons_div)
+        milestone_details.appendChild(milestone_item_list)
+
+        milestone_div.appendChild(milestone_details)
+        backlog_list.appendChild(milestone_div)
     }
 };

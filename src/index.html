@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXT Website</title>
+    <title>Personal Kanban</title>
     <script src="scripts/project.js"></script>
     <script src="scripts/milestones.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -36,55 +36,14 @@
     <!-- Backlog List section-->
 
     <div class="backlog" id="backlog_list"> 
-        Backlog
-        <button class="milestone_button" onclick="milestone_button('delete')">- Delete Milestone</button>
-        <button class="milestone_button" onclick="milestone_button('update')">+ Update Milestone</button>
-        <button class="milestone_button" onclick="milestone_button('new')">+ New Milestone</button>
-        <details>
-            <summary>
-                Milestone 1           
-            </summary>
-            <div>
-                <button class="item_button">- Delete Item</button>
-                <button class="item_button">+ Update Item</button>
-                <button class="item_button">+ New Item</button>
-            </div>
-            <ul>
-                <div class="item">Backlog_item 1</div>
-            </ul>
-        </details>
-        <details>
-            <summary>
-                Milestone 2  
-            </summary>
-            <div>
-                <button class="item_button">- Delete Item</button>
-                <button class="item_button">+ Update Item</button>
-                <button class="item_button">+ New Item</button>
-            </div>
-            <ul>
-                <div class="item">Backlog_item 2</div>
-                <div class="item">Backlog_item 3</div>
-                <div class="item">Backlog_item 4</div>
-            </ul>
-        </details>
-        <details>
-            <summary>
-                Milestone 3             
-            </summary>
-            <div>
-                <button class="item_button">- Delete Item</button>
-                <button class="item_button">+ Update Item</button>
-                <button class="item_button">+ New Item</button>
-            </div>
-            <div>
-                <ul>
-                    <div class="item">Backlog_item 5</div>
-                    <div class="item">Backlog_item 6</div>
-                    <div class="item">Backlog_item 7</div>     
-                </ul>
-            </div>
-        </details>
+        <text>Backlog</text>
+        <div class="milestone_button_div" id="milestone_buttons">
+            <button class="milestone_button" onclick="milestone_button('new')">+ New Milestone</button>
+            <button class="milestone_button" onclick="milestone_button('update')">+ Update Milestone</button>
+            <button class="milestone_button" onclick="milestone_button('delete')">- Delete Milestone</button>
+        </div>
+        <script>milestone_dropdown()</script>
+
     </div>
 
     <!-- Graphics section-->
