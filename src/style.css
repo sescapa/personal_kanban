@@ -7,7 +7,7 @@
 
 .header {
     background: #eeeeee;
-    height: 60px;
+    height: auto;
     width: auto;
     top: 0;
 }
@@ -19,6 +19,7 @@
     display: flex;
     padding-left: 2%;
     margin-bottom: 2%;
+    text-align:center;
 }
 
 .kanban_container .status {
@@ -28,19 +29,46 @@
     box-sizing: border-box;
     border-color: black;
     border: 1px solid;
-
 }
 
 .backlog {
-    background: #001aff;
-    height: 20px;
+    background: grey;
+    height: auto;
     width: auto;
+    text-align:center;
+    padding-left: 1%;
+    padding-bottom: 2%;
+    margin-bottom: 1%;
 }
 
-.graphics {
-    background: #ffe204;
-    height: 20px;
+.backlog .item {
+    background: lightblue;
+    height: auto;
     width: auto;
-    top: 0;
-    z-index: 1;
+    text-align:left;
+    box-sizing: border-box;
+    border-color: black;
+    border: 1px solid;
+    padding-left: 5px;
+    margin-bottom: 1%;
+    margin-right: 2%;
+}
+
+.graphics_container {
+    background: yellow;
+    height: auto;
+    width: auto;
+    display: flex;
+    padding-left: 2%;
+    margin-bottom: 2%;
+    text-align:center;
+}
+
+.graphics_container .graph {
+    width: 100%;
+    height: auto;
+    margin-right: 2%;
+    box-sizing: border-box;
+    border-color: black;
+    border: 1px solid;
 }
