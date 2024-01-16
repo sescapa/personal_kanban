@@ -32,6 +32,16 @@
 }
 
 .backlog {
+    background: lightgrey;
+    height: auto;
+    width: auto;
+    text-align:center;
+    padding-left: 1%;
+    padding-bottom: 2%;
+    margin-bottom: 1%;
+}
+
+.backlog .milestone{
     background: grey;
     height: auto;
     width: auto;
