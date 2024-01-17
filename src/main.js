@@ -34,7 +34,7 @@ let localData = {
         {
             "name": "Creating canvas",
             "due_date": "Due Date",
-            "milestone": "milestone_1",
+            "milestone": "milestone_2",
             "acceptance_criteria": "Acceptance Criteria",
             "status": "status_to_do",
             "id": 6
@@ -42,21 +42,21 @@ let localData = {
         {
             "name": "Create, update and delete story items",
             "due_date": "Due Date",
-            "milestone": "milestone_2",
+            "milestone": "milestone_3",
             "acceptance_criteria": "Acceptance Criteria",
             "status": "status_in_progress"
         },
         {
             "name": "Create JSON structure",
             "due_date": "Due Date",
-            "milestone": "milestone_3",
+            "milestone": "milestone_4",
             "acceptance_criteria": "Acceptance Criteria",
             "status": "status_blocked"
         },
         {
             "name": "Preliminary documentation",
             "due_date": "Due Date",
-            "milestone": "milestone_3",
+            "milestone": "milestone_5",
             "acceptance_criteria": "Acceptance Criteria",
             "status": "status_done"
         }

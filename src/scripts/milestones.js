@@ -1,91 +1,109 @@
-function create_json(event){
+function create_milestone(event){
     
-    var compile_json = {};
-    fetch("data/template/milestone.json")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("HTTP error " + response.status);
-            }
-            return response.json();
-        })
-        .then(response => {
-            Object.keys(response).forEach(
-            key => {
-                compile_json[key] = document.getElementById("milestone_" + key).value
-                }
-            )
-            const data = JSON.stringify(compile_json);
+    document.getElementById("backlog_form_ul").remove()
+    event.preventDefault();
+};
 
-            const dir = './data/milestones';
-            fs.readdir(dir, (err, files) => {
-                var file_name = 'milestone_' + files.length + '.json';
-            });
+function update_milestone(event){
+    
+    document.getElementById("backlog_form_ul").remove()
+    event.preventDefault();
+};
 
-            fs.writeFile("./data/milestones/" + file_name, data, (error) => {
-                if (error) {
-                  console.error(error);
-              
-                  throw error;
-                }
-                console.log("Milestone JSON file has been created written correctly");
-              });
-            
-        }
-    )
+function delete_milestone(event){
+    
+    document.getElementById("backlog_form_ul").remove()
     event.preventDefault();
 };
 
 function milestone_button(message){
+    let backlog_form = document.getElementById("backlog_form")
+    let ul_input_list = []
 
     if (message === 'new'){
-        fetch("data/template/milestone.json")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("HTTP error " + response.status);
-            }
-            return response.json();
-        })
-        .then(json => {
 
-            if (document.contains(document.getElementById("backlog_form"))){
-                document.getElementById("backlog_form").remove()
-            }            
+        if(document.getElementById("backlog_form_ul")){
+            document.getElementById("backlog_form_ul").remove()
+        } 
 
-            var form = document.createElement('form');
-            form.setAttribute("id", "backlog_form")
-            
-            for (let x in json) {
-                var input_box = document.createElement('input');
-                input_box.setAttribute("type","text")
-                input_box.setAttribute("id", "milestone_" + x)
-                input_box.setAttribute("name", json[x])
-                input_box.setAttribute("placeholder", json[x])
-                form.appendChild(input_box);
+        let name_box = document.createElement('input');
+        name_box.setAttribute("type","text")
+        name_box.setAttribute("id", "backlog_form_name")
+        name_box.setAttribute("placeholder", "Milestone Name")
 
-            }
-            
-            var input_submit = document.createElement('input');
+        let description_box = document.createElement('input');
+        description_box.setAttribute("type","text")
+        description_box.setAttribute("id", "backlog_form_description")
+        description_box.setAttribute("placeholder", "Milestone Description")
 
-            input_submit.setAttribute("type","submit")
-            input_submit.setAttribute("value","Submit")
-            input_submit.addEventListener("click", create_json);
-            form.appendChild(input_submit);
-
-            document.getElementById('backlog_list').appendChild(form);
-
-            // var dictstring = JSON.stringify(dict);
-            // var fs = require('fs');
-            // fs.writeFile("thing.json", dictstring);
-        })   
+        let input_submit = document.createElement('input');
+        input_submit.setAttribute("type","submit")
+        input_submit.setAttribute("value","Submit")
+        input_submit.addEventListener("click", create_milestone);
+        
+        ul_input_list.push(name_box)
+        ul_input_list.push(description_box)
+        ul_input_list.push(input_submit)
     }
-
+    
     else if (message === 'update'){
+        if(document.getElementById("backlog_form_ul")){
+            document.getElementById("backlog_form_ul").remove()
+        }
+        let name_box = document.createElement('input');
+        name_box.setAttribute("type","text")
+        name_box.setAttribute("id", "backlog_form_name")
+        name_box.setAttribute("placeholder", "Milestone Name")
 
+        let description_box = document.createElement('input');
+        description_box.setAttribute("type","text")
+        description_box.setAttribute("id", "backlog_form_description")
+        description_box.setAttribute("placeholder", "Milestone Description")
+
+        let input_submit = document.createElement('input');
+        input_submit.setAttribute("type","submit")
+        input_submit.setAttribute("value","Update")
+        input_submit.addEventListener("click", update_milestone);
+        
+        ul_input_list.push(name_box)
+        ul_input_list.push(description_box)
+        ul_input_list.push(input_submit)
     }
 
     else if (message === 'delete'){
+        if(document.getElementById("backlog_form_ul")){
+            document.getElementById("backlog_form_ul").remove()
+        }
 
+        let milestone_input_box = document.createElement('input');
+        milestone_input_box.setAttribute("name", "milestone_list");
+        milestone_input_box.setAttribute("list", "milestone_delete_datalist")
+
+        let milestone_datalist_box = document.createElement('datalist');
+        milestone_datalist_box.setAttribute("id", "milestone_delete_datalist");
+        
+        for(milestone of localData['milestones']){
+            let milestone_option = document.createElement('option')
+            milestone_option.setAttribute("value", milestone['name'])
+            milestone_datalist_box.appendChild(milestone_option)
+        }
+
+        let input_submit = document.createElement('input');
+        input_submit.setAttribute("type","submit")
+        input_submit.setAttribute("value","Delete")
+        input_submit.addEventListener("click", delete_milestone);
+        
+        ul_input_list.push(milestone_input_box)
+        ul_input_list.push(milestone_datalist_box)
+        ul_input_list.push(input_submit)
     }
+
+    let form_ul = document.createElement('ul')
+    form_ul.setAttribute('id', 'backlog_form_ul')
+    for(let box of ul_input_list){
+        form_ul.appendChild(box);
+    }
+    backlog_form.appendChild(form_ul);
 };
 
 function milestone_dropdown(localData){
@@ -146,5 +164,5 @@ function milestone_dropdown(localData){
 
         milestone_div.appendChild(milestone_details)
         backlog_list.appendChild(milestone_div)
-}
+    }
 };
