@@ -19,6 +19,8 @@
     padding-left: 2%;
     margin-bottom: 2%;
     text-align:center;
+    align-items: center;
+    justify-content: center;
 }
 
 .kanban_container .status {
@@ -29,6 +31,15 @@
     border-color: black;
     border: 1px solid;
 }
+
+.kanban_container .backlog_kanban_item {
+    cursor: grab;
+    background: lightblue;
+    box-sizing: border-box;
+    border-color: black;
+    border: 1px solid;
+}
+
 
 .backlog {
     background: lightgrey;

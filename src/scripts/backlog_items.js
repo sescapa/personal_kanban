@@ -18,7 +18,8 @@ function populate_kanban_board(){
                     var backlog_list = document.getElementById(item_status);
 
                     var backlog_item = document.createElement('div')
-                    backlog_item.setAttribute("class", "item")
+                    backlog_item.setAttribute("class", "backlog_kanban_item")
+                    backlog_item.setAttribute("draggable", true)
                     backlog_item.innerHTML = item_name
 
                     backlog_list.appendChild(backlog_item)
