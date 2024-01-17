@@ -1,4 +1,4 @@
-function populate_kanban_board(localData){
+function populate_kanban_board(){
     for(let backlog_item of localData['backlog_items']) {
 
         const id = backlog_item["id"]

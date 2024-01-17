@@ -1,28 +1,20 @@
 function project_page_header(){
 
-    fetch("./data/project.json")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("HTTP error " + response.status);
-            }
-            return response.json();
-        })
-        .then(json => {
-            var header = document.getElementById("project_header");
-            var header_name = document.createElement('div');
-            var header_summary = document.createElement('div');
+    let project = localData['project']
 
-            header_name.setAttribute("class","project_name")
-            header_name.setAttribute("align", "center")
-            header_name.innerHTML = json["name"]
+    let header = document.getElementById("project_header");
+    let header_name = document.createElement('div');
+    let header_summary = document.createElement('div');
 
-            header_summary.setAttribute("class","project_summary")
-            header_summary.setAttribute("align", "center")
-            header_summary.innerHTML = json["summary"]
+    header_name.setAttribute("class","project_name")
+    header_name.setAttribute("align", "center")
+    header_name.innerHTML = project["name"]
 
-            header.appendChild(header_name)
-            header.appendChild(header_summary)
+    header_summary.setAttribute("class","project_summary")
+    header_summary.setAttribute("align", "center")
+    header_summary.innerHTML = project["summary"]
 
-        }
-    )   
+    header.appendChild(header_name)
+    header.appendChild(header_summary)
+
 };

@@ -1,13 +1,13 @@
 //Placeholder for the local storage
 
 let localData = {
-    "project":[
+    "project":
         {
         "name": "Personal Kanban Board",
         "summary": "This personal project is to create a simple Kanban board",
         "due_date": "15 February 2024",
         "id": 1,
-        }],
+        },
     "milestones":[
         {
             "name": "Website Design",
@@ -85,6 +85,6 @@ let localData = {
 }
 
 
-project_page_header(localData)
-milestone_dropdown(localData)
-populate_kanban_board(localData)
+project_page_header()
+milestone_dropdown()
+populate_kanban_board()
