@@ -95,60 +95,72 @@ function milestone_dropdown(){
     var backlog_list = document.getElementById("backlog_list");
 
     //Placeholder
-    var number_of_milestones = 3
+    var number_of_milestones = 4
 
     //Placeholder
+
     for(let num=1; num <= number_of_milestones; num++) {
-
         var milestone_id_base = "milestone_" + num
+        var backlog_item_path_base = "./data/milestones/milestone_"
+        fetch(backlog_item_path_base + num + ".json")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.json();
+            })
 
-        // Main Div
-        var milestone_div = document.createElement('div')
-        milestone_div.setAttribute("class", "milestone")
-        milestone_div.setAttribute("id", milestone_id_base)
+            // Creating milestone detail
+            .then(response => {
 
-        // Details
-        var milestone_details = document.createElement('details')
-        
-        // Summary text
-        var milestone_summary = document.createElement('summary')
-        milestone_summary.setAttribute("id", milestone_id_base + "_summary")
-        milestone_summary.innerHTML = "milestone " + num
+                // Main Div
+                var milestone_div = document.createElement('div')
+                milestone_div.setAttribute("class", "milestone")
+                milestone_div.setAttribute("id", milestone_id_base)
 
-        // Milestone modification buttons
-        var milestone_buttons_div = document.createElement('div')
-        milestone_buttons_div.setAttribute("id", milestone_id_base + "_button_div")
+                // Details
+                var milestone_details = document.createElement('details')
+                
+                // Summary text
+                var milestone_summary = document.createElement('summary')
+                milestone_summary.setAttribute("id", milestone_id_base + "_summary")
+                milestone_summary.innerHTML = response['name']
 
-        var milestone_buttons_new = document.createElement('button')
-        milestone_buttons_new.innerHTML = "New Item"
-        milestone_buttons_new.setAttribute("class", "item_button")
-        milestone_buttons_new.setAttribute("id", milestone_id_base + "_button_new")
+                // Milestone modification buttons
+                var milestone_buttons_div = document.createElement('div')
+                milestone_buttons_div.setAttribute("id", milestone_id_base + "_button_div")
 
-        var milestone_buttons_update = document.createElement('button')
-        milestone_buttons_update.innerHTML = "Update Item"
-        milestone_buttons_update.setAttribute("class", "item_button")
-        milestone_buttons_update.setAttribute("id", milestone_id_base + "_button_update")
+                var milestone_buttons_new = document.createElement('button')
+                milestone_buttons_new.innerHTML = "New Item"
+                milestone_buttons_new.setAttribute("class", "item_button")
+                milestone_buttons_new.setAttribute("id", milestone_id_base + "_button_new")
 
-        var milestone_buttons_delete = document.createElement('button')
-        milestone_buttons_delete.innerHTML = "Delete Item"
-        milestone_buttons_delete.setAttribute("class", "item_button")
-        milestone_buttons_delete.setAttribute("id", milestone_id_base + "_button_delete")
+                var milestone_buttons_update = document.createElement('button')
+                milestone_buttons_update.innerHTML = "Update Item"
+                milestone_buttons_update.setAttribute("class", "item_button")
+                milestone_buttons_update.setAttribute("id", milestone_id_base + "_button_update")
+
+                var milestone_buttons_delete = document.createElement('button')
+                milestone_buttons_delete.innerHTML = "Delete Item"
+                milestone_buttons_delete.setAttribute("class", "item_button")
+                milestone_buttons_delete.setAttribute("id", milestone_id_base + "_button_delete")
 
 
-        milestone_buttons_div.appendChild(milestone_buttons_new)
-        milestone_buttons_div.appendChild(milestone_buttons_update)
-        milestone_buttons_div.appendChild(milestone_buttons_delete)
+                milestone_buttons_div.appendChild(milestone_buttons_new)
+                milestone_buttons_div.appendChild(milestone_buttons_update)
+                milestone_buttons_div.appendChild(milestone_buttons_delete)
 
-        // Milestone item list
-        var milestone_item_list = document.createElement('ul')
-        milestone_item_list.setAttribute("id", milestone_id_base + '_ul')
+                // Milestone item list
+                var milestone_item_list = document.createElement('ul')
+                milestone_item_list.setAttribute("id", milestone_id_base + '_ul')
 
-        // Append everything together
-        milestone_details.appendChild(milestone_summary)
-        milestone_details.appendChild(milestone_buttons_div)
-        milestone_details.appendChild(milestone_item_list)
+                // Append everything together
+                milestone_details.appendChild(milestone_summary)
+                milestone_details.appendChild(milestone_buttons_div)
+                milestone_details.appendChild(milestone_item_list)
 
-        milestone_div.appendChild(milestone_details)
-        backlog_list.appendChild(milestone_div)
+                milestone_div.appendChild(milestone_details)
+                backlog_list.appendChild(milestone_div)
+        })
     }
 };

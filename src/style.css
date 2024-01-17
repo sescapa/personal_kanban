@@ -52,6 +52,20 @@
     margin-bottom: 1%;
 }
 
+.item {
+    background: lightblue;
+    height: auto;
+    width: auto;
+    text-align:left;
+    box-sizing: border-box;
+    border-color: black;
+    border: 1px solid;
+    padding-left: 5px;
+    margin-bottom: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
 .milestone_button_div {
     height: auto;
     width: auto;
@@ -125,20 +139,6 @@ details summary::-webkit-details-marker {
 details > ul {
     padding-bottom: 1rem;
     margin-bottom: 0;
-}
-
-.item {
-    background: lightblue;
-    height: auto;
-    width: auto;
-    text-align:left;
-    box-sizing: border-box;
-    border-color: black;
-    border: 1px solid;
-    padding-left: 5px;
-    margin-bottom: 1%;
-    margin-left: 2%;
-    margin-right: 2%;
 }
 
 .graphics_container {

@@ -41,10 +41,8 @@ function populate_kanban_board(){
                     backlog_list.appendChild(backlog_item)
                     return response
             })
-            
-            // Creating each backlog item in respective milestone
-
             .then(response => {
+                    // Creating each backlog item in respective milestone
                     var item_name = response['name']
                     var milestone_id = response['milestone']
                     var backlog_item = document.getElementById(milestone_id + '_ul');
