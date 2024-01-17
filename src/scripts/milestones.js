@@ -1,5 +1,3 @@
-// import fs from 'fs';
-
 function create_json(event){
     
     var compile_json = {};
@@ -90,78 +88,63 @@ function milestone_button(message){
     }
 };
 
-function milestone_dropdown(){
+function milestone_dropdown(localData){
 
     const backlog_list = document.getElementById("backlog_list");
 
-    //Placeholder
-    const number_of_milestones = 4
-    const backlog_item_path_base = "./data/milestones/milestone_"
-
-    //Placeholder
-
-    for(let num=1; num <= number_of_milestones; num++) {
-        const milestone_id_base = "milestone_" + num
-        fetch(backlog_item_path_base + num + ".json")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("HTTP error " + response.status);
-                }
-                return response.json();
-            })
-
-            // Creating milestone detail
-            .then(response => {
-
-                // Main Div
-                const milestone_div = document.createElement('div')
-                milestone_div.setAttribute("class", "milestone")
-                milestone_div.setAttribute("id", milestone_id_base)
-
-                // Details
-                const milestone_details = document.createElement('details')
-                
-                // Summary text
-                const milestone_summary = document.createElement('summary')
-                milestone_summary.setAttribute("id", milestone_id_base + "_summary")
-                milestone_summary.innerHTML = response['name']
-
-                // Milestone modification buttons
-                const milestone_buttons_div = document.createElement('div')
-                milestone_buttons_div.setAttribute("id", milestone_id_base + "_button_div")
-
-                const milestone_buttons_new = document.createElement('button')
-                milestone_buttons_new.innerHTML = "New Item"
-                milestone_buttons_new.setAttribute("class", "item_button")
-                milestone_buttons_new.setAttribute("id", milestone_id_base + "_button_new")
-
-                const milestone_buttons_update = document.createElement('button')
-                milestone_buttons_update.innerHTML = "Update Item"
-                milestone_buttons_update.setAttribute("class", "item_button")
-                milestone_buttons_update.setAttribute("id", milestone_id_base + "_button_update")
-
-                const milestone_buttons_delete = document.createElement('button')
-                milestone_buttons_delete.innerHTML = "Delete Item"
-                milestone_buttons_delete.setAttribute("class", "item_button")
-                milestone_buttons_delete.setAttribute("id", milestone_id_base + "_button_delete")
+    for(let milestone of localData["milestones"]) {
+        const milestone_id = "milestone_" + milestone['id']
+        const milestone_name = milestone['name']
+        const milestone_description = milestone['description']
 
 
-                milestone_buttons_div.appendChild(milestone_buttons_new)
-                milestone_buttons_div.appendChild(milestone_buttons_update)
-                milestone_buttons_div.appendChild(milestone_buttons_delete)
+        // Main Div
+        const milestone_div = document.createElement('div')
+        milestone_div.setAttribute("class", "milestone")
+        milestone_div.setAttribute("id", milestone_id)
 
-                // Milestone item list
-                const milestone_item_list = document.createElement('ul')
-                milestone_item_list.setAttribute("id", milestone_id_base + '_ul')
+        // Details
+        const milestone_details = document.createElement('details')
+        
+        // Summary text
+        const milestone_summary = document.createElement('summary')
+        milestone_summary.setAttribute("id", milestone_id + "_summary")
+        milestone_summary.innerHTML = milestone_name
 
-                // Append everything together
-                milestone_details.appendChild(milestone_summary)
-                milestone_details.appendChild(milestone_buttons_div)
-                milestone_details.appendChild(milestone_item_list)
+        // Milestone modification buttons
+        const milestone_buttons_div = document.createElement('div')
+        milestone_buttons_div.setAttribute("id", milestone_id + "_button_div")
 
-                milestone_div.appendChild(milestone_details)
-                backlog_list.appendChild(milestone_div)
-                return response
-        })
-    }
+        const milestone_buttons_new = document.createElement('button')
+        milestone_buttons_new.innerHTML = "New Item"
+        milestone_buttons_new.setAttribute("class", "item_button")
+        milestone_buttons_new.setAttribute("id", milestone_id + "_button_new")
+
+        const milestone_buttons_update = document.createElement('button')
+        milestone_buttons_update.innerHTML = "Update Item"
+        milestone_buttons_update.setAttribute("class", "item_button")
+        milestone_buttons_update.setAttribute("id", milestone_id + "_button_update")
+
+        const milestone_buttons_delete = document.createElement('button')
+        milestone_buttons_delete.innerHTML = "Delete Item"
+        milestone_buttons_delete.setAttribute("class", "item_button")
+        milestone_buttons_delete.setAttribute("id", milestone_id + "_button_delete")
+
+
+        milestone_buttons_div.appendChild(milestone_buttons_new)
+        milestone_buttons_div.appendChild(milestone_buttons_update)
+        milestone_buttons_div.appendChild(milestone_buttons_delete)
+
+        // Milestone item list
+        const milestone_item_list = document.createElement('ul')
+        milestone_item_list.setAttribute("id", milestone_id + '_ul')
+
+        // Append everything together
+        milestone_details.appendChild(milestone_summary)
+        milestone_details.appendChild(milestone_buttons_div)
+        milestone_details.appendChild(milestone_item_list)
+
+        milestone_div.appendChild(milestone_details)
+        backlog_list.appendChild(milestone_div)
+}
 };

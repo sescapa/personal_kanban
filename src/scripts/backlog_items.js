@@ -1,60 +1,32 @@
-function populate_kanban_board(){
+function populate_kanban_board(localData){
+    for(let backlog_item of localData['backlog_items']) {
 
-    //Placeholder
-    var number_of_milestones = 4
-
-
-    // Parameters
-    let to_do_box = document.getElementById("status_to_do")
-    let in_progress_box = document.getElementById("status_in_progress")
-    let blocked_box = document.getElementById("status_blocked")
-    let done_box = document.getElementById("status_done")
-
-    // Interactive population
-    for(let num=1; num <= number_of_milestones; num++) {
-        var kanban_item_id = "kanban_item_"+num
-        var backlog_item_id = "backlog_item_"+num
-        var backlog_item_path_base = "./data/backlog_items/item_"
+        const id = backlog_item["id"]
+        const item_status = backlog_item['status']
+        const item_name = backlog_item['name']
+        const milestone_id = backlog_item['milestone']
+        const kanban_item_id = "kanban_item_"+id
+        const backlog_item_id = "backlog_item_"+id
         
-        fetch(backlog_item_path_base + num + ".json")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("HTTP error " + response.status);
-                }
-                return response.json();
-            })
+        // Adding backlog to Kanban
+        let backlog_list = document.getElementById(item_status);
+        let kanban_item_div = document.createElement('div')
 
-            // Populating Kanban board
-            .then(response => {
-                    var item_status = response['status']
-                    var item_name = response['name']
-                    var backlog_list = document.getElementById(item_status);
-                    var backlog_item = document.createElement('div')
+        kanban_item_div.setAttribute("class", "backlog_kanban_item")
+        kanban_item_div.setAttribute("id", kanban_item_id)
+        kanban_item_div.setAttribute("draggable", true)
+        kanban_item_div.innerHTML = item_name
+        
+        set_drag_event(kanban_item_div) 
+        backlog_list.appendChild(kanban_item_div)
 
-                    backlog_item.setAttribute("class", "backlog_kanban_item")
-                    backlog_item.setAttribute("id", kanban_item_id)
-                    backlog_item.setAttribute("draggable", true)
-                    backlog_item.innerHTML = item_name
-                    
-                    set_drag_event(backlog_item) 
-
-                    backlog_list.appendChild(backlog_item)
-                    return response
-            })
-            .then(response => {
-                    // Creating each backlog item in respective milestone
-                    var item_name = response['name']
-                    var milestone_id = response['milestone']
-                    var backlog_item = document.getElementById(milestone_id + '_ul');
-
-                    var backlog_item_div = document.createElement('div')
-                    backlog_item_div.setAttribute("class", "item")
-                    backlog_item_div.setAttribute("id", backlog_item_id)
-                    backlog_item_div.innerHTML = item_name
+        // Adding backlog item to milestones ld
+        let milestone_ld = document.getElementById(milestone_id + '_ul');
+        let backlog_item_div = document.createElement('div')
+        backlog_item_div.setAttribute("class", "item")
+        backlog_item_div.setAttribute("id", backlog_item_id)
+        backlog_item_div.innerHTML = item_name
+        milestone_ld.appendChild(backlog_item_div)
             
-                    backlog_item.appendChild(backlog_item_div)
-                    return response
-            
-            })
-            }
+    }
 }
