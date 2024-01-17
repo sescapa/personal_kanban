@@ -100,32 +100,40 @@ function milestone_dropdown(){
     //Placeholder
     for(let num=1; num <= number_of_milestones; num++) {
 
+        var milestone_id_base = "milestone_" + num
+
         // Main Div
         var milestone_div = document.createElement('div')
         milestone_div.setAttribute("class", "milestone")
-        milestone_div.setAttribute("id", "milestone" + num)
+        milestone_div.setAttribute("id", milestone_id_base)
 
         // Details
         var milestone_details = document.createElement('details')
         
         // Summary text
         var milestone_summary = document.createElement('summary')
+        milestone_summary.setAttribute("id", milestone_id_base + "_summary")
         milestone_summary.innerHTML = "milestone " + num
 
         // Milestone modification buttons
         var milestone_buttons_div = document.createElement('div')
+        milestone_buttons_div.setAttribute("id", milestone_id_base + "_button_div")
 
         var milestone_buttons_new = document.createElement('button')
         milestone_buttons_new.innerHTML = "New Item"
         milestone_buttons_new.setAttribute("class", "item_button")
+        milestone_buttons_new.setAttribute("id", milestone_id_base + "_button_new")
 
         var milestone_buttons_update = document.createElement('button')
         milestone_buttons_update.innerHTML = "Update Item"
         milestone_buttons_update.setAttribute("class", "item_button")
+        milestone_buttons_update.setAttribute("id", milestone_id_base + "_button_update")
 
         var milestone_buttons_delete = document.createElement('button')
         milestone_buttons_delete.innerHTML = "Delete Item"
         milestone_buttons_delete.setAttribute("class", "item_button")
+        milestone_buttons_delete.setAttribute("id", milestone_id_base + "_button_delete")
+
 
         milestone_buttons_div.appendChild(milestone_buttons_new)
         milestone_buttons_div.appendChild(milestone_buttons_update)
@@ -133,11 +141,7 @@ function milestone_dropdown(){
 
         // Milestone item list
         var milestone_item_list = document.createElement('ul')
-        var backlog_item_div = document.createElement('div')
-        backlog_item_div.setAttribute("class", "item")
-        backlog_item_div.innerHTML = "Placeholder"
-
-        milestone_item_list.appendChild(backlog_item_div)
+        milestone_item_list.setAttribute("id", milestone_id_base + '_ul')
 
         // Append everything together
         milestone_details.appendChild(milestone_summary)

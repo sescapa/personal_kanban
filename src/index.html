@@ -7,13 +7,14 @@
     <script src="scripts/project.js"></script>
     <script src="scripts/milestones.js"></script>
     <script src="scripts/backlog_items.js"></script>
-    <!-- <script src="scripts/drag.js"></script> -->
+    <script src="scripts/drag.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Project and Summary section -->
     <div class="header" id="project_header">
     </div>
+    
 
     <!-- Kanban Board section-->
 
@@ -31,6 +32,7 @@
             <text>DONE</text> 
         </div>
     </div>
+    
     <!-- Backlog List section-->
 
     <div class="backlog" id="backlog_list"> 
@@ -49,9 +51,7 @@
         <div class="graph" style="background-color: red;"> Graph 1</div>
         <div class="graph" style="background-color: green"> Graph 2 </div>
     </div>
-    <script>project_page_header()</script>
-    <script>milestone_dropdown()</script>
-    <script>populate_kanban_board()</script>
-    <!-- <script>drag()</script> -->
+
+    <script src="main.js"></script>
 </body>
 </html>

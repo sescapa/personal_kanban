@@ -1,6 +1,6 @@
 function project_page_header(){
 
-    fetch("data/project.json")
+    fetch("./data/project.json")
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);

@@ -1,7 +1,7 @@
 {
     "name": "Create JSON structure",
     "due_date": "Due Date",
-    "milestone": "Create Milestone",
+    "milestone": "milestone_3",
     "acceptance_criteria": "Acceptance Criteria",
     "status": "status_blocked"
 }
