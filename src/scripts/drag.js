@@ -35,7 +35,7 @@ function set_drag_event(backlog_item){
             e.preventDefault();
         });
         done_box.addEventListener("drop", function(e){
-            to_do_box.appendChild(selected);
+            done_box.appendChild(selected);
             selected = null;
         });
     })
