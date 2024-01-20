@@ -1,66 +1,45 @@
 //Placeholder for the local storage
 
+const sample_project = {
+    "name": "Project Name",
+    "summary": "Summary",
+    "due_date": "Due Date",
+    "id": "id"
+}
+
+const sample_item = {
+    "name": "Task Name",
+    "due_date": "Due Date",
+    "milestone_id": "milestone_id",
+    "acceptance_criteria": "Acceptance Criteria",
+    "status": "status",
+    "id": "id"
+}
+
+const sample_milestone = {
+    "name": "Milestone Name",
+    "description": "Milestone Description",
+    "milestone_id": "id"
+}
+
+if (!localStorage.getItem("project")) {
+    localStorage.clear()
+    populateStorage();
+  } else {
+    setStyles();
+  }
+  
+  function populateStorage() {
+    localStorage.setItem("project", JSON.stringify(testObject));
+    localStorage.setItem("font", );
+    localStorage.setItem("image", );
+  }
+
 let localData = {
     "project":
-        {
-        "name": "Personal Kanban Board",
-        "summary": "This personal project is to create a simple Kanban board",
-        "due_date": "15 February 2024",
-        "id": 1,
-        },
-    "milestones":[
-        {
-            "name": "Website Design",
-            "description": "Milestone Description",
-            "id": 2
-        },
-        {
-            "name": "Interactive list of items",
-            "description": "Milestone Description",
-            "id": 3
-        },
-        {
-            "name": "Create Milestone",
-            "description": "Milestone Description",
-            "id": 4
-        },
-        {
-            "name": "Documentation",
-            "description": "Milestone Description",
-            "id": 5
-        }
-    ],
-    "backlog_items":[
-        {
-            "name": "Creating canvas",
-            "due_date": "Due Date",
-            "milestone": "milestone_2",
-            "acceptance_criteria": "Acceptance Criteria",
-            "status": "status_to_do",
-            "id": 6
-        },
-        {
-            "name": "Create, update and delete story items",
-            "due_date": "Due Date",
-            "milestone": "milestone_3",
-            "acceptance_criteria": "Acceptance Criteria",
-            "status": "status_in_progress"
-        },
-        {
-            "name": "Create JSON structure",
-            "due_date": "Due Date",
-            "milestone": "milestone_4",
-            "acceptance_criteria": "Acceptance Criteria",
-            "status": "status_blocked"
-        },
-        {
-            "name": "Preliminary documentation",
-            "due_date": "Due Date",
-            "milestone": "milestone_5",
-            "acceptance_criteria": "Acceptance Criteria",
-            "status": "status_done"
-        }
-    ],
+        ,
+    "milestones":,
+    "backlog_items":,
     "template": {
         "backlog_item_template": {
             "name": "Task Name",
