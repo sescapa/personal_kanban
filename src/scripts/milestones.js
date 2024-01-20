@@ -1,4 +1,5 @@
 function item_button(message, milestone_id, item_form_div, message){
+    let backlog_items = JSON.parse(localStorage.getItem('backlog_items'))
 
     const item_form_ul = item_form_div + '_ul'
     function create_item(event){
@@ -59,7 +60,7 @@ function item_button(message, milestone_id, item_form_div, message){
         let milestone_datalist_box = document.createElement('datalist');
         milestone_datalist_box.setAttribute("id", milestone_id+"_update_datalist");
         
-        for(backlog_item of localData['backlog_items']){
+        for(backlog_item of backlog_items){
             if(backlog_item['milestone'] === milestone_id){
                 let milestone_option = document.createElement('option')
                 milestone_option.setAttribute("value", backlog_item['name'])
@@ -95,7 +96,7 @@ function item_button(message, milestone_id, item_form_div, message){
         let milestone_datalist_box = document.createElement('datalist');
         milestone_datalist_box.setAttribute("id", milestone_id+"_delete_datalist");
         
-        for(backlog_item of localData['backlog_items']){
+        for(backlog_item of backlog_items){
             if(backlog_item['milestone'] === milestone_id){
                 let milestone_option = document.createElement('option')
                 milestone_option.setAttribute("value", backlog_item['name'])
@@ -122,6 +123,7 @@ function item_button(message, milestone_id, item_form_div, message){
 };
 
 function milestone_button(message){
+    let milestones = JSON.parse(localStorage.getItem('milestones'))
     function create_milestone(event){
     
         document.getElementById("backlog_form_ul").remove()
@@ -203,7 +205,7 @@ function milestone_button(message){
         let milestone_datalist_box = document.createElement('datalist');
         milestone_datalist_box.setAttribute("id", "milestone_delete_datalist");
         
-        for(milestone of localData['milestones']){
+        for(milestone of milestones){
             let milestone_option = document.createElement('option')
             milestone_option.setAttribute("value", milestone['name'])
             milestone_datalist_box.appendChild(milestone_option)
