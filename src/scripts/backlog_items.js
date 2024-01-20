@@ -1,6 +1,5 @@
 function populate_kanban_board(){
     let backlog_items = JSON.parse(localStorage.getItem('backlog_items'))
-    console.log(backlog_items);
     for(let backlog_item of backlog_items) {
 
         const item_id = backlog_item['item_id']
