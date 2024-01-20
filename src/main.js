@@ -15,18 +15,18 @@ function populateStorage() {
     }
 
     const sample_milestone = {
-        "name": "Milestone Name",
+        "name": "New Milestone",
         "description": "Milestone Description",
         "milestone_id": milestone_id
     }
 
     const sample_item = {
-        "name": "Task Name",
+        "name": "New Item",
         "due_date": "Due Date",
         "milestone_id": milestone_id,
         "acceptance_criteria": "Acceptance Criteria",
-        "status": "status",
-        "id": item_id
+        "status": "status_to_do",
+        "item_id": item_id
     }
 
     localStorage.setItem("project", JSON.stringify(sample_project));

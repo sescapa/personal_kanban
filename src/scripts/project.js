@@ -1,12 +1,13 @@
 function project_page_header(){
 
-    let project = localData['project']
+    let project = JSON.parse(localStorage.getItem('project'))
 
     let header = document.getElementById("project_header");
     let header_name = document.createElement('div');
     let header_summary = document.createElement('div');
 
     header_name.setAttribute("class","project_name")
+    
     header_name.setAttribute("align", "center")
     header_name.innerHTML = project["name"]
 

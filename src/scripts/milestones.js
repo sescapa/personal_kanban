@@ -228,11 +228,12 @@ function milestone_button(message){
 };
 
 function milestone_dropdown(){
+    let milestones = JSON.parse(localStorage.getItem('milestones'))
 
     const backlog_list = document.getElementById("backlog_list");
 
-    for(let milestone of localData["milestones"]) {
-        const milestone_id = "milestone_" + milestone['id']
+    for(let milestone of milestones) {
+        const milestone_id = milestone['milestone_id']
         const milestone_name = milestone['name']
         const milestone_description = milestone['description']
 

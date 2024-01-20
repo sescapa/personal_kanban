@@ -1,12 +1,14 @@
 function populate_kanban_board(){
-    for(let backlog_item of localData['backlog_items']) {
+    let backlog_items = JSON.parse(localStorage.getItem('backlog_items'))
+    console.log(backlog_items);
+    for(let backlog_item of backlog_items) {
 
-        const id = backlog_item["id"]
+        const item_id = backlog_item['item_id']
         const item_status = backlog_item['status']
         const item_name = backlog_item['name']
-        const milestone_id = backlog_item['milestone']
-        const kanban_item_id = "kanban_item_"+id
-        const backlog_item_id = "backlog_item_"+id
+        const milestone_id = backlog_item['milestone_id']
+        const kanban_item_id = "kanban_item_"+item_id
+        const backlog_item_id = "backlog_item_"+item_id
         
         // Adding backlog to Kanban
         let backlog_list = document.getElementById(item_status);
