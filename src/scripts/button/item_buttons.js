@@ -6,6 +6,34 @@ function create_input(id, placeholder, type){
     return input_box
 }
 
+function update_item_functionality(event){
+    let backlog_items = JSON.parse(localStorage.getItem('backlog_items'))
+    let item = document.getElementById('backlog_item_form_select').value
+    let item_name = document.getElementById('backlog_form_name').value
+    let item_description = document.getElementById('backlog_form_description').value
+
+    let filtered_backlog_items = backlog_items.filter((mile) => mile.item_id !== item['item_id'])
+    const update_item = {
+        "name": item_name,
+        "due_date": item['due_date'],
+        "milestone_id": item['milestone_id'],
+        "acceptance_criteria": item['acceptance_criteria'],
+        "status": item['status'],
+        "item_id": item['item_id'],
+        "description": item_description
+    }
+
+    filtered_backlog_items.unshift(update_item)
+    
+    localStorage.setItem("backlog_items", JSON.stringify(filtered_backlog_items) );
+
+    let updated_backlog_item = new Item(new_item);
+    updated_backlog_item.update_item;
+
+    document.getElementById("backlog_form_ul").remove()
+    event.preventDefault();
+}
+
 class NewItemButton extends Button{
     constructor() {
         super('item_create_button', 'Create Item');
@@ -38,7 +66,7 @@ class NewItemButton extends Button{
             document.getElementById("backlog_form_ul").remove()
             event.preventDefault();
         }
-        
+
         let milestones = JSON.parse(localStorage.getItem('milestones'))
         let milestone_select_box = document.createElement('select');
         milestone_select_box.setAttribute("id", "backlog_milestone_form_select");
@@ -73,35 +101,9 @@ class NewItemButton extends Button{
 
 class UpdateItemButton extends Button{
     constructor() {
-        super('item_update_button', 'Item Milestone'); 
+        super('item_update_button', 'Update Item'); 
     }
     get create_ul_list(){
-        function update_item_functionality(event){
-            let milestones = JSON.parse(localStorage.getItem('milestones'))
-            let item = document.getElementById('backlog_item_form_select').value
-            let item_name = document.getElementById('backlog_form_name').value
-            let item_description = document.getElementById('backlog_form_description').value
-
-            let filtered_milestones = milestones.filter((mile) => mile.milestone_id !== milestone_id)
-            const sample_item = {
-                "name": item_name,
-                "due_date": item['due_date'],
-                "milestone_id": item['milestone_id'],
-                "acceptance_criteria": item['acceptance_criteria'],
-                "status": item['status'],
-                "item_id": item['status'],
-                "description": item_description
-            }
-        
-            filtered_milestones.unshift(updated_milestone)
-            
-            localStorage.setItem("milestones", JSON.stringify(filtered_milestones) );
-
-            document.getElementById(milestone_id + "_summary").innerHTML = milestone_name
-            document.getElementById("backlog_form_ul").remove()
-            event.preventDefault();
-        }
-
         function milestone_change_event(event){
             let items = JSON.parse(localStorage.getItem('backlog_items'))
 

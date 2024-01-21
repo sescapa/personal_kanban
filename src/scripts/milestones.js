@@ -7,6 +7,7 @@ function create_milestone_div(milestone){
     const milestone_div = document.createElement('div')
     milestone_div.setAttribute("class", "milestone")
     milestone_div.setAttribute("id", milestone_id)
+    milestone_div.setAttribute("value", milestone_id)
 
     // Details
     const milestone_details = document.createElement('details')
