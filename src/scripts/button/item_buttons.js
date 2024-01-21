@@ -8,11 +8,12 @@ function create_input(id, placeholder, type){
 
 function update_item_functionality(event){
     let backlog_items = JSON.parse(localStorage.getItem('backlog_items'))
-    let item = document.getElementById('backlog_item_form_select').value
+    let item_id = document.getElementById('backlog_item_form_select').value
     let item_name = document.getElementById('backlog_form_name').value
     let item_description = document.getElementById('backlog_form_description').value
+    let item = backlog_items.filter((item) => item['item_id'] === item_id)[0]
 
-    let filtered_backlog_items = backlog_items.filter((mile) => mile.item_id !== item['item_id'])
+    let filtered_backlog_items = backlog_items.filter((item) => item['item_id'] === item_id)
     const update_item = {
         "name": item_name,
         "due_date": item['due_date'],
@@ -27,12 +28,38 @@ function update_item_functionality(event){
     
     localStorage.setItem("backlog_items", JSON.stringify(filtered_backlog_items) );
 
-    let updated_backlog_item = new Item(new_item);
+    let updated_backlog_item = new Item(update_item);
     updated_backlog_item.update_item;
 
-    document.getElementById("backlog_form_ul").remove()
+    if (document.getElementById("backlog_form_ul")) {
+        document.getElementById("backlog_form_ul").remove()
+    }
     event.preventDefault();
 }
+
+function milestone_change_event(){
+    let items = JSON.parse(localStorage.getItem('backlog_items'))
+    let milestone_id = document.getElementById('backlog_milestone_form_select').value
+    let filtered_items = items.filter((item) => item['milestone_id'] === milestone_id)
+    let item_select_box = document.createElement('select');
+    item_select_box.setAttribute("id", "backlog_item_form_select");
+    
+    let milestone_neutral_option = document.createElement('option')
+    milestone_neutral_option.setAttribute('value', '')
+    milestone_neutral_option.innerHTML = "--Please choose an option--"
+    item_select_box.appendChild(milestone_neutral_option)
+
+    for(let item of filtered_items){
+        let item_option = document.createElement('option')
+        item_option.innerHTML = item['name']
+        item_option.setAttribute("value", item['item_id'])
+        item_select_box.appendChild(item_option)
+    }
+
+    let backlog_form_item_select = document.getElementById('backlog_item_form_select')
+    backlog_form_item_select.replaceWith(item_select_box)
+}
+
 
 class NewItemButton extends Button{
     constructor() {
@@ -104,33 +131,16 @@ class UpdateItemButton extends Button{
         super('item_update_button', 'Update Item'); 
     }
     get create_ul_list(){
-        function milestone_change_event(event){
-            let items = JSON.parse(localStorage.getItem('backlog_items'))
-
-            let item_select_box = document.createElement('select');
-            item_select_box.setAttribute("id", "backlog_item_form_select");
-            item_select_box.appendChild(neutral_option)
-    
-            for(let item of items){
-                let item_option = document.createElement('option')
-                item_option.innerHTML = item['name']
-                item_option.setAttribute("value", item['item_id'])
-                item_select_box.appendChild(item_option)
-            }
-
-            let backlog_form_item_select = document.getElementById('backlog_item_form_select').value
-            backlog_form_item_select.replaceWith(item_select_box)
-        }
-
+        
         let milestones = JSON.parse(localStorage.getItem('milestones'))
         let milestone_select_box = document.createElement('select');
-        milestone_select_box.setAttribute("id", "backlog_form_select");
-        milestone_select_box.setAttribute("onchange","milestone_change_event")
+        milestone_select_box.setAttribute("id", "backlog_milestone_form_select");
+        milestone_select_box.setAttribute("onchange","milestone_change_event    ()")
 
-        let neutral_option = document.createElement('option')
-        neutral_option.setAttribute('value', '')
-        neutral_option.innerHTML = "--Please choose an option--"
-        milestone_select_box.appendChild(neutral_option)
+        let milestone_neutral_option = document.createElement('option')
+        milestone_neutral_option.setAttribute('value', '')
+        milestone_neutral_option.innerHTML = "--Please choose an option--"
+        milestone_select_box.appendChild(milestone_neutral_option)
 
         for(let milestone of milestones){
             let milestone_option = document.createElement('option')
@@ -141,9 +151,13 @@ class UpdateItemButton extends Button{
 
         let items = JSON.parse(localStorage.getItem('backlog_items'))
 
+        let item_neutral_option = document.createElement('option')
+        item_neutral_option.setAttribute('value', '')
+        item_neutral_option.innerHTML = "--Please choose an option--"
+
         let item_select_box = document.createElement('select');
         item_select_box.setAttribute("id", "backlog_item_form_select");
-        item_select_box.appendChild(neutral_option)
+        item_select_box.appendChild(item_neutral_option)
 
         for(let item of items){
             let item_option = document.createElement('option')

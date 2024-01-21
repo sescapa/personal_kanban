@@ -18,6 +18,26 @@ function update_status_item_entry(item, status){
 
 }
 
+function update_milestone_item_entry(item, milestone_id){
+    let backlog_items = JSON.parse(localStorage.getItem('backlog_items'))
+    let current_item = backlog_items.filter((mile) => mile.item_id === item.getAttribute('value'))[0]
+    let filtered_backlog_items = backlog_items.filter((mile) => mile.item_id !== item.getAttribute('value'))
+    
+    const update_item = {
+        "name": current_item['name'],
+        "due_date": current_item['due_date'],
+        "milestone_id": milestone_id,
+        "acceptance_criteria": current_item['acceptance_criteria'],
+        "status": current_item['status'],
+        "item_id": current_item['item_id'],
+        "description": current_item['description']
+    }
+    
+    filtered_backlog_items.push(update_item)
+    localStorage.setItem("backlog_items", JSON.stringify(filtered_backlog_items) );
+
+}
+
 function set_drag_event_kanban(backlog_item){
     let to_do_box = document.getElementById("status_to_do")
     let in_progress_box = document.getElementById("status_in_progress")
@@ -64,4 +84,25 @@ function set_drag_event_kanban(backlog_item){
             selected = null;
         });
     })
+}
+
+function set_drag_event_backlog(backlog_item){
+    let milestones = JSON.parse(localStorage.getItem('milestones'))
+    for(let milestone of milestones){
+        let milestone_id = milestone['milestone_id']
+        let milestone_box = document.getElementById(milestone_id + '_details')
+        backlog_item.addEventListener("dragstart", function (e){
+            let selected = e.target;
+            
+            milestone_box.addEventListener("dragover", function(e){
+                e.preventDefault();
+            });
+            milestone_box.addEventListener("drop", function(e){
+                let milestone_ul_box = document.getElementById(milestone_id + '_ul')
+                milestone_ul_box.appendChild(selected);
+                update_milestone_item_entry(backlog_item, milestone_id)
+                selected = null;
+            });
+    })
+    }
 }

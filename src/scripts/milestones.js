@@ -11,7 +11,8 @@ function create_milestone_div(milestone){
 
     // Details
     const milestone_details = document.createElement('details')
-    
+    milestone_div.setAttribute("id", milestone_id + '_details')
+    milestone_div.setAttribute("value", milestone_id)
     // Summary text
     const milestone_summary = document.createElement('summary')
     milestone_summary.setAttribute("id", milestone_id + "_summary")

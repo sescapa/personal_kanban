@@ -27,7 +27,9 @@ class Item{
         let backlog_item_div = document.createElement('div')
         backlog_item_div.setAttribute("class", "item")
         backlog_item_div.setAttribute("id", this.backlog_item_id)
+        backlog_item_div.setAttribute("value", this.item_id)
         backlog_item_div.innerHTML = this.item_name
+        set_drag_event_backlog(backlog_item_div)
         milestone_ld.appendChild(backlog_item_div)
     }
 
@@ -48,7 +50,7 @@ class Item{
 
     get update_item(){
         this.update_kanban_entry;
-        thisc.update_backlog_entry;
+        this.update_backlog_entry;
     }
 }
 

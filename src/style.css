@@ -64,6 +64,8 @@
     margin-bottom: 1%;
     margin-left: 2%;
     margin-right: 2%;
+    cursor: grab;
+
 }
 
 .milestone_button_div {
