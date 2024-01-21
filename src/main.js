@@ -40,8 +40,8 @@ if (!localStorage.getItem("project")) {
     populateStorage();
   }
 
-localStorage.clear()
-populateStorage();
+// localStorage.clear()
+// populateStorage();
 project_page_header()
 backlog_list_div_create()
 populate_items()

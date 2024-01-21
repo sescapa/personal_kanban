@@ -53,7 +53,7 @@ function backlog_list_div_create(){
     // Populating backlog list
     let func = function(e){e.preventDefault()};
     let milestone_create_button = new NewMilestoneButton('milestone_create_button', 'Create Milestone')
-    let milestone_update_button = new Button('milestone_update_button', 'Update Milestone')
+    let milestone_update_button = new UpdateMilestoneButton('milestone_update_button', 'Update Milestone')
     let milestone_delete_button = new Button('milestone_delete_button', 'Delete Milestone')
     const milestone_button_tab_div = new ButtonTab('milestone_button_tab_div', [milestone_create_button, milestone_update_button, milestone_delete_button]).create_div
     
@@ -67,8 +67,13 @@ function backlog_list_div_create(){
     backlog_list.insertBefore(item_button_tab_div, backlog_form_div)
 
     // Create milestone divs
+    let milestones_div = document.createElement('div')
+    milestones_div.setAttribute('id', 'milestones_div')
+
     for(let milestone of milestones){
-        backlog_list.appendChild(create_milestone_div(milestone))
+        let new_milestone_div = create_milestone_div(milestone)
+        milestones_div.appendChild(new_milestone_div)
     }
+    backlog_list.appendChild(milestones_div)
 
 };
