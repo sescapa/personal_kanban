@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Kanban</title>
+    <script src="scripts/project.js"></script>
+    <script src="scripts/milestones.js"></script>
+    <script src="scripts/backlog_items.js"></script>
+    <script src="scripts/drag.js"></script>
+    <script src="scripts/button/base_class.js"></script>
+    <script src="scripts/button/milestone_buttons.js"></script>
+    <script src="scripts/button/item_buttons.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Project and Summary section -->
+    <div class="header" id="project_header">
+    </div>
+    
+
+    <!-- Kanban Board section-->
+
+    <div class="kanban_container" id="kanban_container">
+        <div class="status" id="status_to_do" data-status="to_do" style="background-color: grey" >
+            <text>TO DO</text> 
+        </div>
+        <div class="status" id="status_in_progress" data-status="in_progress" style="background-color: orange;"> 
+            <text>IN PROGRESS</text>
+        </div>
+        <div class="status" id="status_blocked" data-status="blocked" style="background-color: red;"> 
+            <text>BLOCKED</text>
+        </div>
+        <div class="status" id="status_done" data-status="done" style="background-color: green">
+            <text>DONE</text> 
+        </div>
+    </div>
+    
+    <!-- Backlog List section-->
+
+    <div class="backlog" id="backlog_list"> 
+        <text>Backlog</text>
+    </div>
+
+    <!-- Graphics section-->
+
+    <div class="graphics_container">
+        <div class="graph" style="background-color: red;"> Graph 1</div>
+        <div class="graph" style="background-color: green"> Graph 2 </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
