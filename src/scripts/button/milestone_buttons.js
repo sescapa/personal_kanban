@@ -107,3 +107,46 @@ class UpdateMilestoneButton extends Button{
         this.ul_input_list.push(input_submit)
     }
 }
+
+class DeleteMilestoneButton extends Button{
+    constructor() {
+        super('milestone_delete_button', 'Delete Milestone'); 
+    }
+    get create_ul_list(){
+        function delete_milestone_functionality(event){
+            let milestone_id = document.getElementById('milestone_delete_select').value
+            filtered_milestones = milestones.filter((mile) => mile.milestone_id !== milestone_id)
+    
+            localStorage.setItem("milestones", JSON.stringify(filtered_milestones) );
+            document.getElementById(milestone_id).remove()
+            document.getElementById("backlog_form_ul").remove()
+            event.preventDefault();
+    
+        }
+        let milestones = JSON.parse(localStorage.getItem('milestones'))
+        let filtered_milestones = milestones.filter((mile) => !mile.default)
+
+        let milestone_select_box = document.createElement('select');
+        milestone_select_box.setAttribute("id", "milestone_delete_select");
+        
+        let neutral_option = document.createElement('option')
+        neutral_option.setAttribute('value', '')
+        neutral_option.innerHTML = "--Please choose an option--"
+        milestone_select_box.appendChild(neutral_option)
+
+        for(let milestone of filtered_milestones){
+            let milestone_option = document.createElement('option')
+            milestone_option.innerHTML = milestone['name']
+            milestone_option.setAttribute("value", milestone['milestone_id'])
+            milestone_select_box.appendChild(milestone_option)
+        }
+
+        let input_submit = document.createElement('input');
+        input_submit.setAttribute("type","submit")
+        input_submit.setAttribute("value","Delete")
+        input_submit.addEventListener("click", delete_milestone_functionality);
+        
+        this.ul_input_list.push(milestone_select_box)
+        this.ul_input_list.push(input_submit)
+    }
+}

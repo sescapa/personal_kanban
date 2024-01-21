@@ -54,13 +54,13 @@ function backlog_list_div_create(){
     let func = function(e){e.preventDefault()};
     let milestone_create_button = new NewMilestoneButton('milestone_create_button', 'Create Milestone')
     let milestone_update_button = new UpdateMilestoneButton('milestone_update_button', 'Update Milestone')
-    let milestone_delete_button = new Button('milestone_delete_button', 'Delete Milestone')
+    let milestone_delete_button = new DeleteMilestoneButton('milestone_delete_button', 'Delete Milestone')
     const milestone_button_tab_div = new ButtonTab('milestone_button_tab_div', [milestone_create_button, milestone_update_button, milestone_delete_button]).create_div
     
     // Populating backlog list
-    let item_create_button = new Button('item_create_button', 'Create Item', func)
-    let item_update_button = new Button('item_update_button', 'Update Item', func)
-    let item_delete_button = new Button('item_delete_button', 'Delete Item', func)
+    let item_create_button = new NewItemButton('item_create_button', 'Create Item')
+    let item_update_button = new UpdateItemButton('item_update_button', 'Update Item')
+    let item_delete_button = new DeleteButtonButton('item_delete_button', 'Delete Item')
     const item_button_tab_div = new ButtonTab('item_button_tab_div', [item_create_button, item_update_button, item_delete_button]).create_div
 
     backlog_list.insertBefore(milestone_button_tab_div, backlog_form_div)

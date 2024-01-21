@@ -1,33 +1,48 @@
-function populate_items(){
-    let backlog_items = JSON.parse(localStorage.getItem('backlog_items'))
-    for(let backlog_item of backlog_items) {
+class Item{
+    constructor(item) {
+        this.item_id = item['item_id'];
+        this.item_status = item['status'];
+        this.item_name = item['name'];
+        this.milestone_id = item['milestone_id'];
+        this.kanban_item_id = "kanban_item_"+this.item_id
+        this.backlog_item_id = "backlog_item_"+this.item_id
+    }
 
-        const item_id = backlog_item['item_id']
-        const item_status = backlog_item['status']
-        const item_name = backlog_item['name']
-        const milestone_id = backlog_item['milestone_id']
-        const kanban_item_id = "kanban_item_"+item_id
-        const backlog_item_id = "backlog_item_"+item_id
-        
+    get create_kanban_entry(){
         // Adding backlog to Kanban
-        let backlog_list = document.getElementById(item_status);
+        let backlog_list = document.getElementById(this.item_status);
         let kanban_item_div = document.createElement('div')
 
         kanban_item_div.setAttribute("class", "backlog_kanban_item")
-        kanban_item_div.setAttribute("id", kanban_item_id)
+        kanban_item_div.setAttribute("id", this.kanban_item_id)
         kanban_item_div.setAttribute("draggable", true)
-        kanban_item_div.innerHTML = item_name
-        
-        set_drag_event(kanban_item_div) 
+        kanban_item_div.innerHTML = this.item_name
+        set_drag_event_kanban(kanban_item_div) 
         backlog_list.appendChild(kanban_item_div)
+    }
 
-        // Adding backlog item to milestones ld
-        let milestone_ld = document.getElementById(milestone_id + '_ul');
+    get create_backlog_entry(){
+        let milestone_ld = document.getElementById(this.milestone_id + '_ul');
         let backlog_item_div = document.createElement('div')
         backlog_item_div.setAttribute("class", "item")
-        backlog_item_div.setAttribute("id", backlog_item_id)
-        backlog_item_div.innerHTML = item_name
+        backlog_item_div.setAttribute("id", this.backlog_item_id)
+        backlog_item_div.innerHTML = this.item_name
         milestone_ld.appendChild(backlog_item_div)
+
+    }
+
+    get add_item(){
+        this.create_backlog_entry;
+        this.create_kanban_entry
+    }
+}
+
+function populate_items(){
+    let backlog_items = JSON.parse(localStorage.getItem('backlog_items'))
+    for(let backlog_item of backlog_items) {
+        console.log(backlog_item);
+        let new_backlog_item = new Item(backlog_item);
+        new_backlog_item.add_item;
             
     }
 }

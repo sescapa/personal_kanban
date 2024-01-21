@@ -27,7 +27,8 @@ function populateStorage() {
         "milestone_id": milestone_id,
         "acceptance_criteria": "Acceptance Criteria",
         "status": "status_to_do",
-        "item_id": item_id
+        "item_id": item_id,
+        "description": 'Description'
     }
 
     localStorage.setItem("project", JSON.stringify(sample_project));

@@ -1,4 +1,4 @@
-function set_drag_event(backlog_item){
+function set_drag_event_kanban(backlog_item){
     let to_do_box = document.getElementById("status_to_do")
     let in_progress_box = document.getElementById("status_in_progress")
     let blocked_box = document.getElementById("status_blocked")
