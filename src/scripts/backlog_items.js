@@ -43,6 +43,14 @@ class Item{
         backlog_item.innerHTML = this.item_name
     }
 
+    get delete_kanban_entry(){
+        document.getElementById("kanban_item_"+this.item_id).remove();
+    }
+
+    get delete_backlog_entry(){
+        document.getElementById("backlog_item_"+this.item_id).remove();
+    }
+
     get add_item(){
         this.create_backlog_entry;
         this.create_kanban_entry
@@ -51,6 +59,11 @@ class Item{
     get update_item(){
         this.update_kanban_entry;
         this.update_backlog_entry;
+    }
+
+    get delete_item(){
+        this.delete_kanban_entry;
+        this.delete_backlog_entry;
     }
 }
 
