@@ -44,4 +44,4 @@ localStorage.clear()
 populateStorage();
 project_page_header()
 backlog_list_div_create()
-populate_kanban_board()
+populate_items()

@@ -22,7 +22,7 @@ function populate_items(){
         backlog_list.appendChild(kanban_item_div)
 
         // Adding backlog item to milestones ld
-        let milestone_ld = document.getElementById(milestone_id + '_div_milestone_item_form_ul');
+        let milestone_ld = document.getElementById(milestone_id + '_ul');
         let backlog_item_div = document.createElement('div')
         backlog_item_div.setAttribute("class", "item")
         backlog_item_div.setAttribute("id", backlog_item_id)
