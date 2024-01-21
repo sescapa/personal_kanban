@@ -15,9 +15,10 @@ function populateStorage() {
     }
 
     const sample_milestone = {
-        "name": "New Milestone",
-        "description": "Milestone Description",
-        "milestone_id": milestone_id
+        "name": "No Milestone",
+        "description": "Backlog items with no milestone associated",
+        "milestone_id": milestone_id,
+        "default": true
     }
 
     const sample_item = {
@@ -39,6 +40,8 @@ if (!localStorage.getItem("project")) {
     populateStorage();
   }
 
+localStorage.clear()
+populateStorage();
 project_page_header()
-milestone_dropdown()
+backlog_list_div_create()
 populate_kanban_board()

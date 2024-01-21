@@ -1,4 +1,4 @@
-function populate_kanban_board(){
+function populate_items(){
     let backlog_items = JSON.parse(localStorage.getItem('backlog_items'))
     for(let backlog_item of backlog_items) {
 
